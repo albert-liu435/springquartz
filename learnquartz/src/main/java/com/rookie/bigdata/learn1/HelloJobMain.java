@@ -28,15 +28,17 @@ public class HelloJobMain {
 
         //获取当前时间的下一分钟
         Date runTime = DateBuilder.evenMinuteDate(new Date());
-        //System.out.println(new Date());
-        System.out.println(runTime);
-
         //定义一个job jobkey名称 jobkey 组
         JobDetail job = JobBuilder.newJob(HelloJob.class).withIdentity("job1", "group1").build();
 
+        JobDataMap jobDataMap = job.getJobDataMap();
+        //JobDataMap jobDataMap=new JobDataMap();
+        jobDataMap.put("zhangsan",23);
 
-        //
+        //定义一个定时器
         Trigger trigger = TriggerBuilder.newTrigger().withIdentity("trigger1", "group1").startAt(runTime).build();
+
+        scheduler.getContext().put("lisi",24);
 
         scheduler.scheduleJob(job, trigger);
 
@@ -46,8 +48,6 @@ public class HelloJobMain {
         Thread.sleep(65L * 1000L);
 
         scheduler.shutdown(true);
-
-
 
     }
 }

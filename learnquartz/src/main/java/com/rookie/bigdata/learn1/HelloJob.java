@@ -25,5 +25,17 @@ public class HelloJob implements Job {
         Trigger trigger = jobExecutionContext.getTrigger();
         TriggerKey key1 = trigger.getKey();
 
+        JobDataMap mergedJobDataMap = jobExecutionContext.getMergedJobDataMap();
+        System.out.println(mergedJobDataMap.get("zhangsan"));
+
+        SchedulerContext context = null;
+        try {
+            context = jobExecutionContext.getScheduler().getContext();
+        } catch (SchedulerException e) {
+            e.printStackTrace();
+        }
+        System.out.println(context.get("lisi"));
+
+
     }
 }
