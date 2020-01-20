@@ -15,10 +15,11 @@ public class JdbcJobMain {
     public static void main(String[] args) throws Exception {
 
 
-        StdSchedulerFactory stdSchedulerFactory=new StdSchedulerFactory();
+      //  StdSchedulerFactory stdSchedulerFactory=new StdSchedulerFactory();
 
 
         Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
+
 
         JobDetail jobDetail = JobBuilder.newJob(JdbcJob.class).withDescription("测试JOB").withIdentity("job1", "group1").build();
 
