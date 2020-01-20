@@ -10,6 +10,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>learnquartz</module>
+        <module>jobstorequartz</module>
     </modules>
 
 
